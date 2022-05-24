@@ -4,31 +4,40 @@ namespace App\Controllers;
 
 class Home extends BaseController
 {
+    public function __construct(){
+        $this->$db = \Config\Database::connect();
+        $this->$session = session();
+        helper("utilidades");
+    }
     public function index()
     {
-        $session = \Config\Services::session($config);
 
        /* $newdata = [
             'usuario'  => 'administrador',
             'logged_in' => true,
         ];
 
-        $session->set($newdata);*/
+        $this->$session->set($newdata);*/
 
-        //unset($session);
+        //unset($this->$session);
         
         $datos_dinamicos = [
             'title' => 'IEMM - Dashboard',
             'content' => 'welcome.php'
         ];
 
-        return view('dashboard',$datos_dinamicos);
-
-        /*if(isset($session->usuario)){
+        if(isset($this->$session->usuario)){
 
             return view('dashboard',$datos_dinamicos);
         }else{
             return redirect()->to(site_url('Login'));
-        }*/
+        }
+    }
+
+    public function cerrarSesion(){
+        $array_items = ['usuario', 'token','logged_in'];
+        $this->$session->remove($array_items);
+        //unset($this->$session);
+        return redirect()->to(site_url('Home'));
     }
 }

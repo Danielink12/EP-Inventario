@@ -65,6 +65,27 @@
     text-align: center;
 }
 
+.sidebar{
+    box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+    border-radius: 0px;
+    height: 100vh;
+}
+
+.content{
+    display: grid;
+    grid-template-rows: 1fr 10fr;
+}
+
+.navbar{
+    background-color: #ff8000;
+    height: 65px;
+}
+
+.main{
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+}
+
 .main__404{
     height: 100vh;
     width: 100%;

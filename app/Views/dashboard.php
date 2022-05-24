@@ -4,12 +4,23 @@
         include("head.php"); 
      ?>
 <body>
-<?php 
-        include("navbar.php"); 
-     ?>     
-
-<?php 
-        include("sidebar.php"); 
-     ?>
+        <section class="main">
+                    
+        <div class="sidebardiv">
+                <?php 
+                        include("sidebar.php");  
+                ?> 
+        </div>
+        <div class="content">
+                <div class="navbardiv">
+                        <?php 
+                                include("navbar.php"); 
+                        ?>
+                </div>
+                <div class="data_content">
+                        
+                </div>
+        </div>
+        </section>
 </body>
 </html>

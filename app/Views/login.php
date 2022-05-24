@@ -22,7 +22,7 @@
                         <img class="avatarsvglogin" src="../assets/avatar.svg" alt="">
                     </picture>
                 </div>
-                <form method="post" action="http://localhost:8080/FPH/public/Login/loginweb">
+                <form method="post" action="http://localhost:8080/EP/public/Login/loginweb">
 
                     <div class="form-floating mb-2">
                         <input type="name" name="usuario" onkeyup="" class="form-control" id="floatingInput" placeholder="name@example.com">
