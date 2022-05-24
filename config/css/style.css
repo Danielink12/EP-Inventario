@@ -1,0 +1,116 @@
+/* Iconos descargados de https://undraw.co/  */
+/* Wave descargado de https://getwaves.io/ */
+
+.login__main{
+    height: 100vh;
+    width: 100%;
+    /* display: flex;
+    align-items: center; */
+}
+
+.logomasform{
+    display: grid;
+    /* grid-template-rows: repeat(2, 1fr); */
+    place-items: center;
+    row-gap: 2px;
+}
+
+.logo{
+    padding: 2%;
+}
+
+.login__content{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    place-items: center;
+    /* box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+    padding: 5%;
+    border-radius: 15px; */
+}
+
+.login__form{
+    width: 75%;
+    box-shadow: 0 0 6px rgba(0, 0, 0, .5);
+    padding: 5%;
+    border-radius: 15px;
+}
+
+.wave{
+    position: fixed;
+    height: 100%;
+    z-index: -1;
+}
+
+.mockup__login{
+    width: 75%;
+}
+
+.avatarsvglogin{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    width: 20%;
+    margin-bottom: 15px;
+}
+
+#btnlogin{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.forgot__pass__copy{
+    margin-top: 12px;
+    text-align: center;
+}
+
+.main__404{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.img__404{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
+
+.title{
+    text-align: center;
+}
+
+@media only screen and (max-width: 1600px) {
+    .logo{
+        padding: 0%;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    .logofph{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+       width: 65%;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    /* .logofph{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 65%;
+    } */
+
+    .login__img{
+        display: none;
+    }
+
+    .login__content{
+        grid-template-columns: 1fr;
+    }
+}
