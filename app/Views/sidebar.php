@@ -36,10 +36,10 @@
         </button>
         <div class="collapse show" id="orders-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">Categorias</a></li>
-            <li><a href="#" class="link-dark rounded">Productos</a></li>
-            <li><a href="#" class="link-dark rounded">Entradas y salidas</a></li>
-            <li><a href="#" class="link-dark rounded">Usuarios</a></li>
+            <li><a href="/EP/public/Categoria" class="link-dark rounded">Categorias</a></li>
+            <li><a href="/EP/public/Producto" class="link-dark rounded">Productos</a></li>
+            <li><a href="/EP/public/Entradasalida" class="link-dark rounded">Entradas y salidas</a></li>
+            <li><a href="/EP/public/Usuario" class="link-dark rounded">Usuarios</a></li>
           </ul>
         </div>
       </li>
