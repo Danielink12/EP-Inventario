@@ -1,2 +1,4 @@
 vendor/
 writable/
+public/config
+public/assets

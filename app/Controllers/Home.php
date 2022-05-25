@@ -41,4 +41,12 @@ class Home extends BaseController
         }
     }
 
+    function cerrarSesion(){
+        $session = session();
+        $array_items = ['usuario', 'token','logged_in','nombre','tipousuarioid'];
+        $session->remove($array_items);
+        //unset($this->$session);
+        return redirect()->to(site_url('Home'));
+    }
+
 }

@@ -36,7 +36,7 @@ class Entradasalida extends BaseController
             $datos_dinamicos = [
                 'title' => 'IEMM - Entradas y Salidas',
                 'nombresession' => $this->$session->nombre,
-                'content' => 'usuario',
+                'content' => 'entradasalida',
                 'data' => $table->generate($query)
             ];
             

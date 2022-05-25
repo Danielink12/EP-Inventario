@@ -13,7 +13,8 @@ class Login extends BaseController
     public function index()
     {
         $datos_dinamicos = [
-            'title' => 'IEMM - Login'
+            'title' => 'IEMM - Login',
+            'loglogin' => ''
         ];
 
         return view('login',$datos_dinamicos);
@@ -44,7 +45,7 @@ class Login extends BaseController
             $newdata = [
                 'usuario'  => $usuario,
                 'nombre' => $datos[0]->NOMBRES,
-                'tipousuario' => $datos[0]->TIPOUSUARIOID,
+                'tipousuarioid' => $datos[0]->TIPOUSUARIOID,
                 'token'=>$token,
                 'logged_in' => TRUE
             ];
@@ -54,7 +55,13 @@ class Login extends BaseController
             return redirect()->to(site_url('Home'));
         }else{
             //$this->response->setStatusCode(401,'No autorizado');
-            return view('404');
+            //return redirect()->to(site_url('Login'));
+            $datos_dinamicos = [
+                'title' => 'IEMM - Login',
+                'loglogin' => ''
+            ];
+            echo view('login',$datos_dinamicos);
+            echo "<script> badlogin(); </script>";
         }
 
     }

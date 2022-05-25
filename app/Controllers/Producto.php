@@ -24,7 +24,11 @@ class Producto extends BaseController
         
             $db = \Config\Database::connect();
             $table = new \CodeIgniter\View\Table();
-            $query = $db->query("SELECT * FROM TBPRODUCTO");
+            if ($this->$session->tipousuarioid == 1){
+                $query = $db->query("SELECT PRODUCTOID,PRODUCTO,PRECIOPROVEEDOR,PRECIOVENTA,STOCK FROM TBPRODUCTO");
+            }else {
+                $query = $db->query("SELECT PRODUCTOID,PRODUCTO,PRECIOVENTA,STOCK FROM TBPRODUCTO");
+            }
             $resultado = $query->getResult();
 
             $template = [
@@ -36,7 +40,7 @@ class Producto extends BaseController
             $datos_dinamicos = [
                 'title' => 'IEMM - Productos',
                 'nombresession' => $this->$session->nombre,
-                'content' => 'usuario',
+                'content' => 'producto',
                 'data' => $table->generate($query)
             ];
             

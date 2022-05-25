@@ -36,7 +36,7 @@ class Categoria extends BaseController
             $datos_dinamicos = [
                 'title' => 'IEMM - Categorias',
                 'nombresession' => $this->$session->nombre,
-                'content' => 'usuario',
+                'content' => 'categoria',
                 'data' => $table->generate($query)
             ];
             
