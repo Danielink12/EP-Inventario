@@ -18,7 +18,7 @@
                         ?>
                 </div>
                 <div class="data_content">
-                        
+                        <?=  $this->include(esc($content));  ?>
                 </div>
         </div>
         </section>

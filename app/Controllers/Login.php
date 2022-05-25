@@ -31,6 +31,7 @@ class Login extends BaseController
         $query = $this->$db->query("SELECT * FROM TBUSUARIO WHERE USERN='".$usuario."' AND PASSW='".$passencrypt."'");
 
         $resultado = $query->getNumRows();
+        $datos = $query->getResult();
         
         if($resultado>0){
 
@@ -42,6 +43,7 @@ class Login extends BaseController
 
             $newdata = [
                 'usuario'  => $usuario,
+                'nombre' => $datos[0]->NOMBRES,
                 'token'=>$token,
                 'logged_in' => TRUE
             ];

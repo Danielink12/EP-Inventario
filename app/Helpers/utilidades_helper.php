@@ -64,7 +64,11 @@ function decodeToken($token){
 }
 
 function cerrarSesion(){
-    unset($session);
+    $session = session();
+    $array_items = ['usuario', 'token','logged_in','nombre'];
+    $session->remove($array_items);
+    //unset($this->$session);
+    return redirect()->to(site_url('Home'));
 }
 
 ?>

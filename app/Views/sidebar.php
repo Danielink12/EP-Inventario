@@ -1,6 +1,6 @@
 <!-- INICIO DE NAV -->
 <div class="flex-shrink-0 p-3 bg-white sidebar" style="width: 280px;">
-    <a href="/" class="navbarcont d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+    <a href="/EP/public/Home" class="navbarcont d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
       <svg class="bi me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
       <span class="fs-5 fw-semibold">Dist. Emmanuel</span>
     </a>
@@ -11,9 +11,9 @@
         </button>
         <div class="collapse show" id="home-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-            <li><a href="#" class="link-dark rounded">Overview</a></li>
+            <!-- <li><a href="#" class="link-dark rounded">Overview</a></li> -->
             <!-- <li><a href="#" class="link-dark rounded">Updates</a></li> -->
-            <li><a href="#" class="link-dark rounded">Reportes</a></li>
+            <li><a href="/EP/public/Home" class="link-dark rounded">Pagina principal</a></li>
           </ul>
         </div>
       </li>

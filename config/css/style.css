@@ -81,9 +81,30 @@
     height: 65px;
 }
 
+.nombresession{
+    text-align: justify;
+    color: #fff;
+    display: block;
+    margin-left: 80%;
+    margin-top: 10px;
+}
+
 .main{
     display: grid;
     grid-template-columns: 1fr 5fr;
+}
+
+.data_content{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.tablas{
+    width: 100%;
 }
 
 .main__404{

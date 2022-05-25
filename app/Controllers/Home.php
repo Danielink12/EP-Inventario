@@ -20,10 +20,17 @@ class Home extends BaseController
         $this->$session->set($newdata);*/
 
         //unset($this->$session);
+
+        try {
+            decodeToken($this->$session->token);
+        } catch (\Throwable $th) {
+            cerrarSesion();
+        }
         
         $datos_dinamicos = [
             'title' => 'IEMM - Dashboard',
-            'content' => 'welcome.php'
+            'nombresession' => $this->$session->nombre,
+            'content' => 'usuario'
         ];
 
         if(isset($this->$session->usuario)){
@@ -34,10 +41,4 @@ class Home extends BaseController
         }
     }
 
-    public function cerrarSesion(){
-        $array_items = ['usuario', 'token','logged_in'];
-        $this->$session->remove($array_items);
-        //unset($this->$session);
-        return redirect()->to(site_url('Home'));
-    }
 }

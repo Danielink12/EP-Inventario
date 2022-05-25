@@ -18,6 +18,8 @@
     <link rel="stylesheet" href="../config/css/normalize.css">
     <link rel="stylesheet" href="../config/css/style.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/">
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
@@ -39,5 +41,14 @@
 
     <link href="../config/css/sidebars.css" rel="stylesheet">
     <title><?= esc($title) ?></title>
+    <script>
+        $(document).ready(function () {
+          $('#example').DataTable({
+            "pageLength": 5,
+            "searching": false,
+            "lengthChange": false
+          });
+        });
+    </script>
     <script></script>
 </head>
