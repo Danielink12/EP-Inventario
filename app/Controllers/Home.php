@@ -30,6 +30,8 @@ class Home extends BaseController
         $datos_dinamicos = [
             'title' => 'IEMM - Dashboard',
             'nombresession' => $this->$session->nombre,
+            'usuarioid' => $this->$session->usuarioid,
+            'tipousuarioid' => $this->$session->tipousuarioid,
             'content' => 'reporte'
         ];
 

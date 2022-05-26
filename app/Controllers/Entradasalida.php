@@ -40,9 +40,11 @@ class Entradasalida extends BaseController
                 $row->PRODUCTO;
                 $row->CANTIDAD;
                 $row->TIPOPROCESO;
+                $row->TIPOPROCESOID;
+                $row->PRODUCTOID;
 
-                $links  = '<a class="btn btn-primary" href="Entradasalida/vistaEditarES/'.$row->IYSID.'" role="button">EDITAR</a>';
-                $links .= '<a class="btn btn-danger" href="Entradasalida/eliminarES/'.$row->IYSID.'" role="button">ELIMINAR</a>';
+                // $links  = '<a class="btn btn-primary" href="Entradasalida/vistaEditarES/'.$row->IYSID.'" role="button">EDITAR</a>';
+                $links .= '<a class="btn btn-danger" href="Entradasalida/eliminarES/'.$row->IYSID.'/'.$row->TIPOPROCESOID.'/'.$row->PRODUCTOID.'/'.$row->CANTIDAD.'" role="button">ELIMINAR</a>';
 
                 $table->addRow($row->IYSID,$row->PRODUCTO,$row->CANTIDAD,$row->TIPOPROCESO,$links);
             }
@@ -50,6 +52,7 @@ class Entradasalida extends BaseController
             $datos_dinamicos = [
                 'title' => 'IEMM - Entradas y Salidas',
                 'nombresession' => $this->$session->nombre,
+                'tipousuarioid' => $this->$session->tipousuarioid,
                 'content' => 'entradasalida',
                 'data' => $table->generate()
             ];
@@ -69,6 +72,7 @@ class Entradasalida extends BaseController
         $datos_dinamicos = [
             'title' => 'IEMM - Nueva ENTRADA/SALIDA',
             'nombresession' => $this->$session->nombre,
+            'tipousuarioid' => $this->$session->tipousuarioid,
             'content' => 'creareditarEntradaSalida',
             'seccion' => 'NUEVA ENTRADA/SALIDA',
             'txtbtn' => 'CREAR ENTRADA/SALIDA',
@@ -90,7 +94,23 @@ class Entradasalida extends BaseController
 
         try {
             //code...
-            $query = $db->query("INSERT INTO TBINGRESOSYSALIDAS (PRODUCTOID,CANTIDAD,TIPOPROCESOID,USUARIOREGID) VALUES(".$productoid.",".$cantidad.",".$tipoprocesoid.",".$this->$session->usuarioid.")");
+            $producto = $db->query("SELECT STOCK FROM TBPRODUCTO WHERE PRODUCTOID=".$productoid);
+            $resultadoproducto = $producto->getResult();
+            $stock=$resultadoproducto[0]->STOCK;
+            
+            if($tipoprocesoid==1){
+                $updatestock = $db->query("UPDATE TBPRODUCTO SET STOCK=".($stock+$cantidad)." WHERE PRODUCTOID=".$productoid);
+                $query = $db->query("INSERT INTO TBINGRESOSYSALIDAS (PRODUCTOID,CANTIDAD,TIPOPROCESOID,USUARIOREGID) VALUES(".$productoid.",".$cantidad.",".$tipoprocesoid.",".$this->$session->usuarioid.")");
+
+            }else if ($tipoprocesoid==2){
+                if ($stock<$cantidad){
+
+                }else {
+                    $updatestock = $db->query("UPDATE TBPRODUCTO SET STOCK=".($stock-$cantidad)." WHERE PRODUCTOID=".$productoid);
+                    $query = $db->query("INSERT INTO TBINGRESOSYSALIDAS (PRODUCTOID,CANTIDAD,TIPOPROCESOID,USUARIOREGID) VALUES(".$productoid.",".$cantidad.",".$tipoprocesoid.",".$this->$session->usuarioid.")");
+                }
+            }
+
             return redirect()->to(site_url('Entradasalida'));
         } catch (\Throwable $th) {
             //throw $th;
@@ -107,6 +127,7 @@ class Entradasalida extends BaseController
         $datos_dinamicos = [
             'title' => 'IEMM - Editar ESNTRADA/SALIDA',
             'nombresession' => $this->$session->nombre,
+            'tipousuarioid' => $this->$session->tipousuarioid,
             'content' => 'creareditarEntradaSalida',
             'datosES' => $resultado,
             'seccion' => 'EDITAR ENTRADA/SALIDA',
@@ -136,10 +157,27 @@ class Entradasalida extends BaseController
         }
     }
 
-    public function eliminarES($id){
+    public function eliminarES($id,$tipoprocesoid,$productoid,$stockeliminar){
         $db = \Config\Database::connect();
         try {
-            $query = $db->query("DELETE FROM TBINGRESOSYSALIDAS WHERE IYSID=".$id);
+            $producto = $db->query("SELECT STOCK FROM TBPRODUCTO WHERE PRODUCTOID=".$productoid);
+            $resultadoproducto = $producto->getResult();
+            $stock=$resultadoproducto[0]->STOCK;
+
+            if ($tipoprocesoid==1){
+                if ($stock<$stockeliminar){
+                    
+                }else{
+                    $updatestock = $db->query("UPDATE TBPRODUCTO SET STOCK=".($stock-$stockeliminar)." WHERE PRODUCTOID=".$productoid);
+                    $query = $db->query("DELETE FROM TBINGRESOSYSALIDAS WHERE IYSID=".$id);
+                }
+
+            }else if($tipoprocesoid==2){
+                $updatestock = $db->query("UPDATE TBPRODUCTO SET STOCK=".($stock+$stockeliminar)." WHERE PRODUCTOID=".$productoid);
+                $query = $db->query("DELETE FROM TBINGRESOSYSALIDAS WHERE IYSID=".$id);
+            }
+
+            
             return redirect()->to(site_url('Entradasalida'));
         } catch (\Throwable $th) {
             //throw $th;

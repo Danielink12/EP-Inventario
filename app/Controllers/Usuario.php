@@ -20,42 +20,55 @@ class Usuario extends BaseController
         }
         
 
-        if(isset($this->$session->usuario)){
-        
-            $db = \Config\Database::connect();
-            $table = new \CodeIgniter\View\Table();
-            $query = $db->query("SELECT USUARIOID,NOMBRES,APELLIDOS,USERN AS USUARIO,TU.TIPOUSUARIO FROM TBUSUARIO U INNER JOIN TBTIPOUSUARIO TU ON U.TIPOUSUARIOID=TU.TIPOUSUARIOID ");
-            $resultado = $query->getResult();
+            if(isset($this->$session->usuario)){
 
-            $template = [
-                'table_open' => '<table id="example" class="table table-hover" style="width:100%">',
-            ];
-            
-            $table->setTemplate($template);
-            
-            $table->setHeading('NOMBRES', 'APELLIDOS', 'USUARIO','TIPO USUARIO','ACCIONES');
+                if($this->$session->tipousuarioid==1){
+                    $db = \Config\Database::connect();
+                $table = new \CodeIgniter\View\Table();
+                $query = $db->query("SELECT USUARIOID,NOMBRES,APELLIDOS,USERN AS USUARIO,TU.TIPOUSUARIO FROM TBUSUARIO U INNER JOIN TBTIPOUSUARIO TU ON U.TIPOUSUARIOID=TU.TIPOUSUARIOID ");
+                $resultado = $query->getResult();
 
-            foreach ($query->getResult() as $row) {
-                $row->USUARIOID;
-                $row->NOMBRES;
-                $row->APELLIDOS;
-                $row->USERN;
+                $template = [
+                    'table_open' => '<table id="example" class="table table-hover" style="width:100%">',
+                ];
+                
+                $table->setTemplate($template);
+                
+                $table->setHeading('NOMBRES', 'APELLIDOS', 'USUARIO','TIPO USUARIO','ACCIONES');
 
-                $links  = '<a class="btn btn-primary" href="Usuario/vistaEditarUsuario/'.$row->USUARIOID.'" role="button">EDITAR</a>';
-                $links .= '<a class="btn btn-danger" href="Usuario/eliminarUsuario/'.$row->USUARIOID.'" role="button">ELIMINAR</a>';
+                foreach ($query->getResult() as $row) {
+                    $row->USUARIOID;
+                    $row->NOMBRES;
+                    $row->APELLIDOS;
+                    $row->USERN;
 
-                $table->addRow($row->NOMBRES,$row->APELLIDOS,$row->USUARIO,$row->TIPOUSUARIO,$links);
+                    $links  = '<a class="btn btn-primary" href="Usuario/vistaEditarUsuario/'.$row->USUARIOID.'" role="button">EDITAR</a>';
+                    $links .= '<a class="btn btn-danger" href="Usuario/eliminarUsuario/'.$row->USUARIOID.'" role="button">ELIMINAR</a>';
+
+                    $table->addRow($row->NOMBRES,$row->APELLIDOS,$row->USUARIO,$row->TIPOUSUARIO,$links);
+                }
+
+                $datos_dinamicos = [
+                    'title' => 'IEMM - Usuarios',
+                    'nombresession' => $this->$session->nombre,
+                    'tipousuarioid' => $this->$session->tipousuarioid,
+                    'content' => 'usuario',
+                    'data' => $table->generate()
+                ];
+                
+                return view('dashboard',$datos_dinamicos);
+            }else{
+                $datos_dinamicos = [
+                    'title' => 'IEMM - Usuarios',
+                    'nombresession' => $this->$session->nombre,
+                    'tipousuarioid' => $this->$session->tipousuarioid,
+                    'content' => '404',
+                    //'data' => $table->generate()
+                ];
+                
+                return view('dashboard',$datos_dinamicos);
             }
-
-            $datos_dinamicos = [
-                'title' => 'IEMM - Usuarios',
-                'nombresession' => $this->$session->nombre,
-                'content' => 'usuario',
-                'data' => $table->generate()
-            ];
-            
-            return view('dashboard',$datos_dinamicos);
-            
+        
         }else{
             return redirect()->to(site_url('Login'));
         }
@@ -65,6 +78,7 @@ class Usuario extends BaseController
         $datos_dinamicos = [
             'title' => 'IEMM - Nuevo Usuario',
             'nombresession' => $this->$session->nombre,
+            'tipousuarioid' => $this->$session->tipousuarioid,
             'content' => 'creareditarUsuario',
             'seccion' => 'NUEVO USUARIO',
             'txtbtn' => 'CREAR USUARIO',
@@ -92,6 +106,8 @@ class Usuario extends BaseController
         }else{
             $estadoid = false;
         }
+
+        $passw = Encrypt($passw);
         
         //$query = $db->query("SELECT * FROM TBUSUARIO WHERE USUARIOID=".$userid);
         //$resultado = $query->getResult();
@@ -115,6 +131,7 @@ class Usuario extends BaseController
         $datos_dinamicos = [
             'title' => 'IEMM - Editar Usuario',
             'nombresession' => $this->$session->nombre,
+            'tipousuarioid' => $this->$session->tipousuarioid,
             'content' => 'creareditarUsuario',
             'datosUsuario' => $resultado,
             'seccion' => 'EDITAR USUARIO',

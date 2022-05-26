@@ -11,7 +11,7 @@
             </div>
             <div class="dimg__404">
                 <picture>
-                    <img src="../assets/404.svg" alt="" class="img__404">
+                    <img src="../assets/undraw_lost.svg" alt="" class="img__404">
                 </picture>
             </div>
         </div>

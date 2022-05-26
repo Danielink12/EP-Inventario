@@ -48,6 +48,7 @@ class Categoria extends BaseController
             $datos_dinamicos = [
                 'title' => 'IEMM - Categorias',
                 'nombresession' => $this->$session->nombre,
+                'tipousuarioid' => $this->$session->tipousuarioid,
                 'content' => 'categoria',
                 'data' => $table->generate()
             ];
@@ -63,6 +64,7 @@ class Categoria extends BaseController
         $datos_dinamicos = [
             'title' => 'IEMM - Nueva Categoria',
             'nombresession' => $this->$session->nombre,
+            'tipousuarioid' => $this->$session->tipousuarioid,
             'content' => 'creareditarCategoria',
             'seccion' => 'NUEVA CATEGORIA',
             'txtbtn' => 'CREAR CATEGORIA',
@@ -94,6 +96,7 @@ class Categoria extends BaseController
         $datos_dinamicos = [
             'title' => 'IEMM - Editar Categoria',
             'nombresession' => $this->$session->nombre,
+            'tipousuarioid' => $this->$session->tipousuarioid,
             'content' => 'creareditarCategoria',
             'datosCategoria' => $resultado,
             'seccion' => 'EDITAR CATEGORIA',

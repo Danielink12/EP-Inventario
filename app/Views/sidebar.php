@@ -40,7 +40,7 @@
             <li><a href="/EP/public/Categoria" class="link-dark rounded">Categorias</a></li>
             <li><a href="/EP/public/Producto" class="link-dark rounded">Productos</a></li>
             <li><a href="/EP/public/Entradasalida" class="link-dark rounded">Entradas y salidas</a></li>
-            <li><a href="/EP/public/Usuario" class="link-dark rounded">Usuarios</a></li>
+            <?php $link="/EP/public/Usuario"; $class="link-dark rounded"; if($tipousuarioid==1){ echo "<li><a href=".$link." class=".$class.">Usuarios</a></li>"; } ?>
           </ul>
         </div>
       </li>
@@ -52,7 +52,7 @@
         <div class="collapse show" id="account-collapse">
           <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
             <!-- <li><a href="#" class="link-dark rounded">New...</a></li> -->
-            <li><a href="#" class="link-dark rounded">Perfil</a></li>
+            <!-- <li><a href="#" class="link-dark rounded">Perfil</a></li> -->
             <!-- <li><a href="#" class="link-dark rounded">Ajustes</a></li> -->
             <li><a href="/EP/public/Home/cerrarSesion" class="link-dark rounded">Cerrar Sesión</a></li>
           </ul>

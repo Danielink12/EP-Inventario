@@ -50,17 +50,14 @@ class Producto extends BaseController
                 }
     
             }else {
-                $table->setHeading('PRODUCTOID', 'PRODUCTO','PRECIOVENTA','STOCK','ACCIONES');
+                $table->setHeading('PRODUCTOID', 'PRODUCTO','PRECIOVENTA','STOCK');
                 foreach ($query->getResult() as $row) {
                     $row->PRODUCTOID;
                     $row->PRODUCTO;
                     $row->PRECIOVENTA;
                     $row->STOCK;
-    
-                    $links  = '<a class="btn btn-primary" href="Producto/vistaEditarProducto/'.$row->PRODUCTOID.'" role="button">EDITAR</a>';
-                    $links .= '<a class="btn btn-danger" href="Producto/eliminarProducto/'.$row->PRODUCTOID.'" role="button">ELIMINAR</a>';
-    
-                    $table->addRow($row->PRODUCTOID,$row->PRODUCTO,$row->PRECIOVENTA,$row->STOCK,$links);
+
+                    $table->addRow($row->PRODUCTOID,$row->PRODUCTO,$row->PRECIOVENTA,$row->STOCK);
                 }
     
             }
@@ -68,7 +65,7 @@ class Producto extends BaseController
             $datos_dinamicos = [
                 'title' => 'IEMM - Productos',
                 'nombresession' => $this->$session->nombre,
-                'tipousuario' => $this->$session->tipousuarioid,
+                'tipousuarioid' => $this->$session->tipousuarioid,
                 'content' => 'producto',
                 'data' => $table->generate()
             ];
@@ -88,6 +85,7 @@ class Producto extends BaseController
         $datos_dinamicos = [
             'title' => 'IEMM - Nuevo Producto',
             'nombresession' => $this->$session->nombre,
+            'tipousuarioid' => $this->$session->tipousuarioid,
             'content' => 'creareditarProducto',
             'seccion' => 'NUEVO PRODUCTO',
             'txtbtn' => 'CREAR PRODUCTO',
@@ -138,6 +136,7 @@ class Producto extends BaseController
         $datos_dinamicos = [
             'title' => 'IEMM - Editar Producto',
             'nombresession' => $this->$session->nombre,
+            'tipousuarioid' => $this->$session->tipousuarioid,
             'content' => 'creareditarProducto',
             'datosProducto' => $resultado,
             'seccion' => 'EDITAR PRODUCTO',

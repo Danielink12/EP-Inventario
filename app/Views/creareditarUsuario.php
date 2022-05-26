@@ -12,7 +12,7 @@
     </div>
     <div class="col-6">
       <label for="inputAddress" class="form-label">Telefono</label>
-      <input type="text" class="form-control" id="telefono" name="telefono" placeholder="" value="<?= $datosUsuario[0]->TELEFONO ?>" required>
+      <input type="number" class="form-control" id="telefono" name="telefono" placeholder="" value="<?= $datosUsuario[0]->TELEFONO ?>" required>
     </div>
     <div class="col-6">
       <label for="inputAddress2" class="form-label">Usuario</label>

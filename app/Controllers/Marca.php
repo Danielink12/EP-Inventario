@@ -48,6 +48,7 @@ class Marca extends BaseController
             $datos_dinamicos = [
                 'title' => 'IEMM - Marcas',
                 'nombresession' => $this->$session->nombre,
+                'tipousuarioid' => $this->$session->tipousuarioid,
                 'content' => 'marca',
                 'data' => $table->generate()
             ];
@@ -63,6 +64,7 @@ class Marca extends BaseController
         $datos_dinamicos = [
             'title' => 'IEMM - Nueva Marca',
             'nombresession' => $this->$session->nombre,
+            'tipousuarioid' => $this->$session->tipousuarioid,
             'content' => 'creareditarMarca',
             'seccion' => 'NUEVA MARCA',
             'txtbtn' => 'CREAR MARCA',
@@ -94,6 +96,7 @@ class Marca extends BaseController
         $datos_dinamicos = [
             'title' => 'IEMM - Editar Marca',
             'nombresession' => $this->$session->nombre,
+            'tipousuarioid' => $this->$session->tipousuarioid,
             'content' => 'creareditarMarca',
             'datosMarca' => $resultado,
             'seccion' => 'EDITAR MARCA',
