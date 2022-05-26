@@ -68,7 +68,7 @@ class Categoria extends BaseController
             'content' => 'creareditarCategoria',
             'seccion' => 'NUEVA CATEGORIA',
             'txtbtn' => 'CREAR CATEGORIA',
-            'urlpost' => 'http://localhost:8080/EP/public/Categoria/crearCategoria'
+            'urlpost' => '/EP/public/Categoria/crearCategoria'
         ];
         
         return view('dashboard',$datos_dinamicos);
@@ -101,7 +101,7 @@ class Categoria extends BaseController
             'datosCategoria' => $resultado,
             'seccion' => 'EDITAR CATEGORIA',
             'txtbtn' => 'GURDAR CAMBIOS',
-            'urlpost' => 'http://localhost:8080/EP/public/Categoria/editarCategoria'
+            'urlpost' => '/EP/public/Categoria/editarCategoria'
         ];
         
         return view('dashboard',$datos_dinamicos);

@@ -83,7 +83,7 @@ class Usuario extends BaseController
             'seccion' => 'NUEVO USUARIO',
             'txtbtn' => 'CREAR USUARIO',
             'nuevo' => true,
-            'urlpost' => 'http://localhost:8080/EP/public/Usuario/crearUsuario'
+            'urlpost' => '/EP/public/Usuario/crearUsuario'
         ];
         
         return view('dashboard',$datos_dinamicos);
@@ -136,7 +136,7 @@ class Usuario extends BaseController
             'datosUsuario' => $resultado,
             'seccion' => 'EDITAR USUARIO',
             'txtbtn' => 'GURDAR CAMBIOS',
-            'urlpost' => 'http://localhost:8080/EP/public/Usuario/editarUsuario'
+            'urlpost' => '/EP/public/Usuario/editarUsuario'
         ];
         
         return view('dashboard',$datos_dinamicos);

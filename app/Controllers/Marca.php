@@ -68,7 +68,7 @@ class Marca extends BaseController
             'content' => 'creareditarMarca',
             'seccion' => 'NUEVA MARCA',
             'txtbtn' => 'CREAR MARCA',
-            'urlpost' => 'http://localhost:8080/EP/public/Marca/crearMarca'
+            'urlpost' => '/EP/public/Marca/crearMarca'
         ];
         
         return view('dashboard',$datos_dinamicos);
@@ -101,7 +101,7 @@ class Marca extends BaseController
             'datosMarca' => $resultado,
             'seccion' => 'EDITAR MARCA',
             'txtbtn' => 'GURDAR CAMBIOS',
-            'urlpost' => 'http://localhost:8080/EP/public/Marca/editarMarca'
+            'urlpost' => '/EP/public/Marca/editarMarca'
         ];
         
         return view('dashboard',$datos_dinamicos);

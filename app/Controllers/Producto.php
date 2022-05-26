@@ -46,7 +46,7 @@ class Producto extends BaseController
                     $links  = '<a class="btn btn-primary" href="Producto/vistaEditarProducto/'.$row->PRODUCTOID.'" role="button">EDITAR</a>';
                     $links .= '<a class="btn btn-danger" href="Producto/eliminarProducto/'.$row->PRODUCTOID.'" role="button">ELIMINAR</a>';
     
-                    $table->addRow($row->PRODUCTOID,$row->PRODUCTO,$row->PRECIOPROVEEDOR,$row->PRECIOVENTA,$row->STOCK,$links);
+                    $table->addRow($row->PRODUCTOID,$row->PRODUCTO,'$'.number_format($row->PRECIOPROVEEDOR,2),'$'.number_format($row->PRECIOVENTA,2),$row->STOCK,$links);
                 }
     
             }else {
@@ -92,7 +92,7 @@ class Producto extends BaseController
             'marca' => $marca,
             'categoria' => $categoria,
             'nuevo' => true,
-            'urlpost' => 'http://localhost:8080/EP/public/Producto/crearProducto'
+            'urlpost' => '/EP/public/Producto/crearProducto'
         ];
         
         return view('dashboard',$datos_dinamicos);
@@ -143,7 +143,7 @@ class Producto extends BaseController
             'txtbtn' => 'GURDAR CAMBIOS',
             'marca' => $marca,
             'categoria' => $categoria,
-            'urlpost' => 'http://localhost:8080/EP/public/Producto/editarProducto'
+            'urlpost' => '/EP/public/Producto/editarProducto'
         ];
         
         return view('dashboard',$datos_dinamicos);

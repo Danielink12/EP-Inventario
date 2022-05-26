@@ -8,23 +8,23 @@
     </div>
     <div class="col-md-6">
       <label for="inputAddress" class="form-label">Stock</label>
-      <input type="number" class="form-control" id="stock" name="stock" placeholder="" value="<?= $datosProducto[0]->STOCK ?>" required>
+      <input type="number" step="0.01" class="form-control" id="stock" name="stock" placeholder="" value="<?= $datosProducto[0]->STOCK ?>" required>
     </div>
     <div class="col-6">
       <label for="inputAddress" class="form-label">Pecio Proveedor</label>
-      <input type="number" class="form-control" id="precioproveedor" name="precioproveedor" placeholder="" value="<?= $datosProducto[0]->PRECIOPROVEEDOR ?>" required>
+      <input type="number" step="0.01" class="form-control" id="precioproveedor" name="precioproveedor" placeholder="" value="<?= $datosProducto[0]->PRECIOPROVEEDOR ?>" required>
     </div>
     <div class="col-6">
       <label for="inputAddress2" class="form-label">Precio Venta</label>
-      <input type="number" class="form-control" id="precioventa" name="precioventa" placeholder="" value="<?= $datosProducto[0]->PRECIOVENTA ?>" required>
+      <input type="number" step="0.01" class="form-control" id="precioventa" name="precioventa" placeholder="" value="<?= $datosProducto[0]->PRECIOVENTA ?>" required>
     </div>
     <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Ancho (si aplica)</label>
-      <input type="number" class="form-control" id="ancho" name="ancho" value="<?= $datosProducto[0]->ANCHO ?>">
+      <input type="number" step="0.01" class="form-control" id="ancho" name="ancho" value="<?= $datosProducto[0]->ANCHO ?>">
     </div>
     <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Alto (si aplica)</label>
-      <input type="number" class="form-control" id="alto" name="alto" value="<?= $datosProducto[0]->ALTO ?>">
+      <input type="number" step="0.01" class="form-control" id="alto" name="alto" value="<?= $datosProducto[0]->ALTO ?>">
     </div>
     <div class="col-md-6">
       <label for="inputState" class="form-label">Marca</label>

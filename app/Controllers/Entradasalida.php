@@ -44,7 +44,7 @@ class Entradasalida extends BaseController
                 $row->PRODUCTOID;
 
                 // $links  = '<a class="btn btn-primary" href="Entradasalida/vistaEditarES/'.$row->IYSID.'" role="button">EDITAR</a>';
-                $links .= '<a class="btn btn-danger" href="Entradasalida/eliminarES/'.$row->IYSID.'/'.$row->TIPOPROCESOID.'/'.$row->PRODUCTOID.'/'.$row->CANTIDAD.'" role="button">ELIMINAR</a>';
+                $links = '<a class="btn btn-danger" href="Entradasalida/eliminarES/'.$row->IYSID.'/'.$row->TIPOPROCESOID.'/'.$row->PRODUCTOID.'/'.$row->CANTIDAD.'" role="button">ELIMINAR</a>';
 
                 $table->addRow($row->IYSID,$row->PRODUCTO,$row->CANTIDAD,$row->TIPOPROCESO,$links);
             }
@@ -79,7 +79,7 @@ class Entradasalida extends BaseController
             'producto' => $producto,
             'tipoproceso' => $tipoproceso,
             'nuevo' => true,
-            'urlpost' => 'http://localhost:8080/EP/public/Entradasalida/crearES'
+            'urlpost' => '/EP/public/Entradasalida/crearES'
         ];
         
         return view('dashboard',$datos_dinamicos);
@@ -134,7 +134,7 @@ class Entradasalida extends BaseController
             'txtbtn' => 'GURDAR CAMBIOS',
             'producto' => $producto,
             'tipoproceso' => $tipoproceso,  
-            'urlpost' => 'http://localhost:8080/EP/public/Entradasalida/editarES'
+            'urlpost' => '/EP/public/Entradasalida/editarES'
         ];
         
         return view('dashboard',$datos_dinamicos);
