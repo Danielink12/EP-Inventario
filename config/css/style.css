@@ -91,7 +91,7 @@
 
 .main{
     display: grid;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 1fr 6fr;
 }
 
 .data_content{
@@ -105,13 +105,17 @@
 
 .titulo{
     text-align: center;
-    margin-bottom: 65px;
+    margin-bottom: 50px;
 }
 
 .tablas{
     width: 70%;
     margin-bottom: 100px;
     text-align: center;
+}
+
+.btnnuevo{
+    margin-left: 90%;
 }
 
 .main__404{

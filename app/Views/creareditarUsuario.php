@@ -1,6 +1,6 @@
 <div class="formdiv">
   <h2 class="titulo"><?= $seccion ?></h2>
-  <form class="row g-3" method="post" action="http://localhost:8080/EP/public/Usuario/editarUsuario">
+  <form class="row g-3" method="post" action="<?= $urlpost ?>">
       <input type="hidden" id="userid" name="userid" value="<?= $datosUsuario[0]->USUARIOID ?>">
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Nombres</label>

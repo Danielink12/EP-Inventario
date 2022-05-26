@@ -62,11 +62,48 @@ class Usuario extends BaseController
     }
 
     public function vistaCrearUsuario(){
-
+        $datos_dinamicos = [
+            'title' => 'IEMM - Nuevo Usuario',
+            'nombresession' => $this->$session->nombre,
+            'content' => 'creareditarUsuario',
+            'datosUsuario' => $resultado,
+            'seccion' => 'NUEVO USUARIO',
+            'txtbtn' => 'CREAR USUARIO',
+            'urlpost' => 'http://localhost:8080/EP/public/Usuario/crearUsuario'
+        ];
+        
+        return view('dashboard',$datos_dinamicos);
     }
 
     public function crearUsuario(){
+        $db = \Config\Database::connect();
+
+        $userid= $_POST['userid'];
+        $nombres = $_POST['nombres'];
+        $apellidos = $_POST['apellidos'];
+        $telefono = $_POST['telefono'];
+        $usern = $_POST['usuario'];
+        $passw = $_POST['pass'];
+        $tipousuarioid = $_POST['tipousuario'];
+        $estado = $_POST['estadousuario'];
+
+        if ($estado=="on"){
+            $estadoid = true;
+        }else{
+            $estadoid = false;
+        }
         
+        //$query = $db->query("SELECT * FROM TBUSUARIO WHERE USUARIOID=".$userid);
+        //$resultado = $query->getResult();
+
+        try {
+            //code...
+            //echo "UPDATE TBUSUARIO SET NOMBRES='".$nombres."',APELLIDOS='".$apellidos."',TELEFONO='".$telefono."',USERN='".$usern."',PASSW='".$passw."',TIPOUSUARIOID=".$tipousuarioid.",ESTADOID=".$estadoid.",USUARIOMODID=".$this->$session->usuarioid.",FECHAMOD=GETDATE() WHERE USUARIOID=".$userid;
+            $query = $db->query("INSERT INTO TBUSUARIO (NOMBRES,APELLIDOS,TELEFONO,USERN,PASSW,TIPOUSUARIOID,ESTADOID,USUARIOREGID) VALUES('".$nombres."','".$apellidos."','".$telefono."','".$usern."','".$passw."',".$tipousuarioid.",1,".$this->$session->usuarioid.")");
+            return redirect()->to(site_url('Usuario'));
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
     }
 
     public function vistaEditarUsuario($id){
@@ -81,7 +118,8 @@ class Usuario extends BaseController
             'content' => 'creareditarUsuario',
             'datosUsuario' => $resultado,
             'seccion' => 'EDITAR USUARIO',
-            'txtbtn' => 'GURDAR CAMBIOS'
+            'txtbtn' => 'GURDAR CAMBIOS',
+            'urlpost' => 'http://localhost:8080/EP/public/Usuario/editarUsuario'
         ];
         
         return view('dashboard',$datos_dinamicos);
