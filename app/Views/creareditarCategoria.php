@@ -4,7 +4,7 @@
       <input type="hidden" id="categoriaid" name="categoriaid" value="<?= $datosCategoria[0]->CATEGORIAID ?>">
     <div class="col-md-12">
       <label for="inputEmail4" class="form-label">Nombre de Categoria</label>
-      <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $datosCategoria[0]->CATEGORIA ?>">
+      <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $datosCategoria[0]->CATEGORIA ?>" required>
     </div>
       <button type="submit" class="btn btn-primary"><?= esc($txtbtn) ?></button>
     </div>

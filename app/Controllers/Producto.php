@@ -93,6 +93,7 @@ class Producto extends BaseController
             'txtbtn' => 'CREAR PRODUCTO',
             'marca' => $marca,
             'categoria' => $categoria,
+            'nuevo' => true,
             'urlpost' => 'http://localhost:8080/EP/public/Producto/crearProducto'
         ];
         

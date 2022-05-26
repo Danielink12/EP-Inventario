@@ -4,7 +4,7 @@
       <input type="hidden" id="marcaid" name="marcaid" value="<?= $datosMarca[0]->MARCAID ?>">
     <div class="col-md-12">
       <label for="inputEmail4" class="form-label">Nombre de la Marca</label>
-      <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $datosMarca[0]->MARCA ?>">
+      <input type="text" class="form-control" id="nombre" name="nombre" value="<?= $datosMarca[0]->MARCA ?>" required>
     </div>
       <button type="submit" class="btn btn-primary"><?= esc($txtbtn) ?></button>
     </div>

@@ -1,35 +1,35 @@
 <div class="formdiv">
   <h2 class="titulo"><?= $seccion ?></h2>
   <form class="row g-3" method="post" action="<?= $urlpost ?>">
-      <input type="hidden" id="productoid" name="productoid" value="<?= $datosProducto[0]->PRODUCTOID ?>">
+      <input type="hidden" id="productoid" name="productoid" value="<?= $datosProducto[0]->PRODUCTOID ?> ">
     <div class="col-md-6">
       <label for="inputEmail4" class="form-label">Nombre del Producto</label>
-      <input type="text" class="form-control" id="nombreproducto" name="nombreproducto" value="<?= $datosProducto[0]->PRODUCTO ?>">
+      <input type="text" class="form-control" id="nombreproducto" name="nombreproducto" value="<?= $datosProducto[0]->PRODUCTO ?>" required>
     </div>
     <div class="col-md-6">
       <label for="inputAddress" class="form-label">Stock</label>
-      <input type="text" class="form-control" id="stock" name="stock" placeholder="" value="<?= $datosProducto[0]->STOCK ?>">
+      <input type="number" class="form-control" id="stock" name="stock" placeholder="" value="<?= $datosProducto[0]->STOCK ?>" required>
     </div>
     <div class="col-6">
       <label for="inputAddress" class="form-label">Pecio Proveedor</label>
-      <input type="text" class="form-control" id="precioproveedor" name="precioproveedor" placeholder="" value="<?= $datosProducto[0]->PRECIOPROVEEDOR ?>">
+      <input type="number" class="form-control" id="precioproveedor" name="precioproveedor" placeholder="" value="<?= $datosProducto[0]->PRECIOPROVEEDOR ?>" required>
     </div>
     <div class="col-6">
       <label for="inputAddress2" class="form-label">Precio Venta</label>
-      <input type="text" class="form-control" id="precioventa" name="precioventa" placeholder="" value="<?= $datosProducto[0]->PRECIOVENTA ?>">
+      <input type="number" class="form-control" id="precioventa" name="precioventa" placeholder="" value="<?= $datosProducto[0]->PRECIOVENTA ?>" required>
     </div>
     <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Ancho (si aplica)</label>
-      <input type="text" class="form-control" id="ancho" name="ancho" value="<?= $datosProducto[0]->ANCHO ?>">
+      <input type="number" class="form-control" id="ancho" name="ancho" value="<?= $datosProducto[0]->ANCHO ?>">
     </div>
     <div class="col-md-6">
     <label for="inputPassword4" class="form-label">Alto (si aplica)</label>
-      <input type="text" class="form-control" id="alto" name="alto" value="<?= $datosProducto[0]->ALTO ?>">
+      <input type="number" class="form-control" id="alto" name="alto" value="<?= $datosProducto[0]->ALTO ?>">
     </div>
     <div class="col-md-6">
       <label for="inputState" class="form-label">Marca</label>
-      <select id="marcaid" name="marcaid" class="form-select">
-        <option>ELEGIR...</option>
+      <select id="marcaid" name="marcaid" class="form-select" required>
+        <option <?php if($nuevo==true){echo "selected disabled";}else{echo "disabled";} ?> value="">ELEGIR...</option>
         <?php foreach ($marca->getResult() as $itemmarca): ?>
         <option value="<?= $itemmarca->MARCAID ?>" <?php if($itemmarca->MARCAID==$datosProducto[0]->MARCAID){echo "selected";} ?>><?= $itemmarca->MARCA ?></option>
         <?php endforeach; ?>
@@ -37,8 +37,8 @@
     </div>
     <div class="col-md-6">
       <label for="inputState" class="form-label">Categoria</label>
-      <select id="categoriaid" name="categoriaid" class="form-select">
-        <option>ELEGIR...</option>
+      <select id="categoriaid" name="categoriaid" class="form-select" required>
+        <option <?php if($nuevo==true){echo "selected disabled";}else{echo "disabled";} ?> value="">ELEGIR...</option>
         <?php foreach ($categoria->getResult() as $itemcategoria): ?>
         <option value="<?= $itemcategoria->CATEGORIAID ?>" <?php if($itemcategoria->CATEGORIAID==$datosProducto[0]->CATEGORIAID){echo "selected";} ?>><?= $itemcategoria->CATEGORIA ?></option>
         <?php endforeach; ?>

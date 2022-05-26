@@ -68,6 +68,7 @@ class Usuario extends BaseController
             'content' => 'creareditarUsuario',
             'seccion' => 'NUEVO USUARIO',
             'txtbtn' => 'CREAR USUARIO',
+            'nuevo' => true,
             'urlpost' => 'http://localhost:8080/EP/public/Usuario/crearUsuario'
         ];
         

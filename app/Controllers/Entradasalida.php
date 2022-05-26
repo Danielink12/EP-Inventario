@@ -74,6 +74,7 @@ class Entradasalida extends BaseController
             'txtbtn' => 'CREAR ENTRADA/SALIDA',
             'producto' => $producto,
             'tipoproceso' => $tipoproceso,
+            'nuevo' => true,
             'urlpost' => 'http://localhost:8080/EP/public/Entradasalida/crearES'
         ];
         
@@ -128,7 +129,7 @@ class Entradasalida extends BaseController
 
         try {
             //code...
-            $query = $db->query("UPDATE TBINGRESOSYSALIDAS SET PRODUCTOID=".$productoid.",CANTIDAD=".$cantidad.",TIPOPROCESOID=".$tipoprocesoid." WHERE IYSID=".$esid);
+            $query = $db->query("UPDATE TBINGRESOSYSALIDAS SET PRODUCTOID=".$productoid.",CANTIDAD=".$cantidad.",TIPOPROCESOID=".$tipoprocesoid.",USUARIOMODID=".$this->$session->usuarioid.",FECHAMOD=GETDATE() WHERE IYSID=".$esid);
             return redirect()->to(site_url('Entradasalida'));
         } catch (\Throwable $th) {
             //throw $th;
