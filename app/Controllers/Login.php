@@ -45,6 +45,7 @@ class Login extends BaseController
             $newdata = [
                 'usuario'  => $usuario,
                 'nombre' => $datos[0]->NOMBRES,
+                'usuarioid' => $datos[0]->USUARIOID,
                 'tipousuarioid' => $datos[0]->TIPOUSUARIOID,
                 'token'=>$token,
                 'logged_in' => TRUE

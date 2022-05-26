@@ -12,17 +12,17 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <!-- <link  rel="icon"   href="assets/img/favicon.png" type="image/png" /> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="../config/js/functions.js"></script>
+    <script src="http://localhost/EP/config/js/functions.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="../config/js/sweetalert2.all.min.js"></script>
-    <link rel="stylesheet" href="../config/css/normalize.css">
-    <link rel="stylesheet" href="../config/css/style.css">
+    <script src="http://localhost:8080/EP/config/js/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="http://localhost:8080/EP/config/css/normalize.css">
+    <link rel="stylesheet" href="http://localhost:8080/EP/config/css/style.css">
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/sidebars/">
     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
     <!-- <script src="//cdn.datatables.net/plug-ins/1.12.0/i18n/es-ES.json"></script> -->
 
-    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost:8080/EP/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
     .bd-placeholder-img {
@@ -40,13 +40,13 @@
     }
     </style>
 
-    <link href="../config/css/sidebars.css" rel="stylesheet">
+    <link href="http://localhost:8080/EP/config/css/sidebars.css" rel="stylesheet">
     <title><?= esc($title) ?></title>
     <script>
         $(document).ready(function () {
           $('#example').DataTable({
             "pageLength": 5,
-            "searching": false,
+            "searching": true,
             "lengthChange": false,
           });
         });
