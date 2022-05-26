@@ -66,7 +66,6 @@ class Usuario extends BaseController
             'title' => 'IEMM - Nuevo Usuario',
             'nombresession' => $this->$session->nombre,
             'content' => 'creareditarUsuario',
-            'datosUsuario' => $resultado,
             'seccion' => 'NUEVO USUARIO',
             'txtbtn' => 'CREAR USUARIO',
             'urlpost' => 'http://localhost:8080/EP/public/Usuario/crearUsuario'

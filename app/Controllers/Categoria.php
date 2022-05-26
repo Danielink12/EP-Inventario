@@ -33,17 +33,99 @@ class Categoria extends BaseController
             
             $table->setTemplate($template);
 
+            $table->setHeading('CATEGORIAID', 'CATEGORIA', 'ACCIONES');
+
+            foreach ($query->getResult() as $row) {
+                $row->CATEGORIAID;
+                $row->CATEGORIA;
+
+                $links  = '<a class="btn btn-primary" href="Categoria/vistaEditarCategoria/'.$row->CATEGORIAID.'" role="button">EDITAR</a>';
+                $links .= '<a class="btn btn-danger" href="Categoria/eliminarCategoria/'.$row->CATEGORIAID.'" role="button">ELIMINAR</a>';
+
+                $table->addRow($row->CATEGORIAID,$row->CATEGORIA,$links);
+            }
+
             $datos_dinamicos = [
                 'title' => 'IEMM - Categorias',
                 'nombresession' => $this->$session->nombre,
                 'content' => 'categoria',
-                'data' => $table->generate($query)
+                'data' => $table->generate()
             ];
             
             return view('dashboard',$datos_dinamicos);
             
         }else{
             return redirect()->to(site_url('Login'));
+        }
+    }
+
+    public function vistaCrearCategoria(){
+        $datos_dinamicos = [
+            'title' => 'IEMM - Nueva Categoria',
+            'nombresession' => $this->$session->nombre,
+            'content' => 'creareditarCategoria',
+            'seccion' => 'NUEVA CATEGORIA',
+            'txtbtn' => 'CREAR CATEGORIA',
+            'urlpost' => 'http://localhost:8080/EP/public/Categoria/crearCategoria'
+        ];
+        
+        return view('dashboard',$datos_dinamicos);
+    }
+
+    public function crearCategoria(){
+        $db = \Config\Database::connect();
+
+        $nombres = $_POST['nombre'];
+
+        try {
+            //code...
+            $query = $db->query("INSERT INTO TBCATEGORIA (CATEGORIA) VALUES('".$nombres."')");
+            return redirect()->to(site_url('Categoria'));
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+
+    public function vistaEditarCategoria($id){
+        $db = \Config\Database::connect();
+        $query = $db->query("SELECT * FROM TBCATEGORIA WHERE CATEGORIAID=".$id);
+        $resultado = $query->getResult();
+
+        $datos_dinamicos = [
+            'title' => 'IEMM - Editar Categoria',
+            'nombresession' => $this->$session->nombre,
+            'content' => 'creareditarCategoria',
+            'datosCategoria' => $resultado,
+            'seccion' => 'EDITAR CATEGORIA',
+            'txtbtn' => 'GURDAR CAMBIOS',
+            'urlpost' => 'http://localhost:8080/EP/public/Categoria/editarCategoria'
+        ];
+        
+        return view('dashboard',$datos_dinamicos);
+    }
+
+    public function editarCategoria(){
+        $db = \Config\Database::connect();
+
+        $categoriaid= $_POST['categoriaid'];
+        $nombre = $_POST['nombre'];
+
+        try {
+            //code...
+            $query = $db->query("UPDATE TBCATEGORIA SET CATEGORIA='".$nombre."' WHERE CATEGORIAID=".$categoriaid);
+            return redirect()->to(site_url('Categoria'));
+        } catch (\Throwable $th) {
+            //throw $th;
+        }
+    }
+
+    public function eliminarCategoria($id){
+        $db = \Config\Database::connect();
+        try {
+            $query = $db->query("DELETE FROM TBCATEGORIA WHERE CATEGORIAID=".$id);
+            return redirect()->to(site_url('Categoria'));
+        } catch (\Throwable $th) {
+            //throw $th;
         }
     }
 

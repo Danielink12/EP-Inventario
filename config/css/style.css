@@ -140,6 +140,10 @@
     width: 80%;
 }
 
+.formdivcat{
+    width: 50%;
+}
+
 @media only screen and (max-width: 1600px) {
     .logo{
         padding: 0%;
